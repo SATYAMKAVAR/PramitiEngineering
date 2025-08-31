@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Logo from "@/components/Logo";
 
 const Footer = () => {
   return (
@@ -7,7 +6,8 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Logo className="h-10 w-auto [&>*]:brightness-0 [&>*]:invert" />
+            {/* <Logo className="h-10 w-auto [&>*]:brightness-0 [&>*]:invert" /> */}
+                      <img src="/Logo.jpg" alt="Logo" className="h-10 w-auto" />
             <p className="text-sm text-muted-foreground">
               Engineering innovative solutions for tomorrow's challenges.
             </p>
@@ -36,9 +36,9 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Contact</h3>
             <div className="space-y-2 text-sm">
-              <p>Email: info@pramiti.com</p>
-              <p>Phone: +1 (555) 123-4567</p>
-              <p>Address: 123 Innovation Drive, Tech City, TC 12345</p>
+              <p>Email: pramiti.technology@gmail.com</p>
+              <p>Phone: +91 79846 40722</p>
+              <p>Address: Pramiti Technology, Opp. Kamdhenu Fun Resort, Morbi Bypass Highway, Sanala Road, Morbi - 363641</p>
             </div>
           </div>
         </div>
