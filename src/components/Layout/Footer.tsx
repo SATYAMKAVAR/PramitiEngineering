@@ -36,7 +36,7 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Contact</h3>
             <div className="space-y-2 text-sm">
-              <p>Email: pramiti.technology@gmail.com</p>
+              <p>Email: pramititechz@gmail.com</p>
               <p>Phone: +91 79846 40722</p>
               <p>Address: Pramiti Technology, Opp. Kamdhenu Fun Resort, Morbi Bypass Highway, Sanala Road, Morbi - 363641</p>
             </div>

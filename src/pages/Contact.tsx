@@ -32,16 +32,10 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitting, setSubmitting] = useState(false);
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Basic validation
-    if (
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.email ||
-      !formData.message
-    ) {
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.message) {
       toast({
         title: "Required fields missing",
         description: "Please fill in all required fields.",
@@ -49,23 +43,52 @@ const Contact = () => {
       });
       return;
     }
-
-    // Simulate form submission
-    toast({
-      title: "Message sent successfully!",
-      description: "We'll be in touch within 24 hours.",
-    });
-
-    // Reset form
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      company: "",
-      service: "",
-      message: "",
-    });
+    setSubmitting(true);
+    try {
+      const response = await fetch("https://formspree.io/f/movnlpnz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          service: formData.service,
+          message: formData.message
+        })
+      });
+      if (response.ok) {
+        toast({
+          title: "Message sent successfully!",
+          description: "We'll be in touch within 24 hours.",
+        });
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          company: "",
+          service: "",
+          message: "",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again later.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again later.",
+        variant: "destructive",
+      });
+    }
+    setSubmitting(false);
   };
 
   const handleInputChange = (field: string, value: string) => {
@@ -76,7 +99,7 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      details: ["pramiti.technology@gmail.com"],
+      details: ["pramititechz@gmail.com"],
       description: "Send us an email anytime",
     },
     {
@@ -91,7 +114,7 @@ const Contact = () => {
       details: [
         "Pramiti Technology, Opp. Kamdhenu Fun Resort, ",
         "Morbi Bypass Highway, Sanala Road, ",
-        "Morbi - 363641"
+        "Morbi - 363641",
       ],
       description: "Come say hello",
     },
@@ -136,7 +159,8 @@ const Contact = () => {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name *</Label>
+                        <Label htmlFor="firstName">First Name </Label>
+                        <span className="text-red-600">*</span>
                         <Input
                           id="firstName"
                           value={formData.firstName}
@@ -148,7 +172,8 @@ const Contact = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name *</Label>
+                        <Label htmlFor="lastName">Last Name </Label>
+                        <span className="text-red-600">*</span>
                         <Input
                           id="lastName"
                           value={formData.lastName}
@@ -163,7 +188,8 @@ const Contact = () => {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="email">Email *</Label>
+                        <Label htmlFor="email">Email </Label>
+                        <span className="text-red-600">*</span>
                         <Input
                           id="email"
                           type="email"
@@ -176,7 +202,8 @@ const Contact = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="phone">Phone</Label>
+                        <Label htmlFor="phone">Phone </Label>
+                        <span className="text-red-600">*</span>
                         <Input
                           id="phone"
                           type="tel"
@@ -184,7 +211,8 @@ const Contact = () => {
                           onChange={(e) =>
                             handleInputChange("phone", e.target.value)
                           }
-                          placeholder="(555) 123-4567"
+                          placeholder="79846 40722"
+                          required
                         />
                       </div>
                     </div>
@@ -240,7 +268,8 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message">Message *</Label>
+                      <Label htmlFor="message">Message </Label>
+                      <span className="text-red-600">*</span>
                       <Textarea
                         id="message"
                         value={formData.message}
@@ -254,7 +283,7 @@ const Contact = () => {
                     </div>
 
                     <Button type="submit" size="lg" className="w-full">
-                      Submit
+                      {submitting ? "Submitting..." : "Submit"}
                     </Button>
                   </form>
                 </CardContent>
@@ -311,7 +340,7 @@ const Contact = () => {
                     Send us an email directly and we'll respond within 24 hours.
                   </p>
                   <Button variant="outline" asChild>
-                    <a href="mailto:pramiti.technology@gmail.com">Send Email</a>
+                    <a href="mailto:pramititechz@gmail.com">Send Email</a>
                   </Button>
                 </CardContent>
               </Card>
