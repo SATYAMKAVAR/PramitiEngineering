@@ -18,7 +18,7 @@ const Header = () => {
     <header className="bg-background shadow-sm border-b sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center">
         <Link to="/">
-          <img src="/Logo.jpg" alt="Logo" className="h-10 w-auto" />
+          <img src="/Logo_White.png" alt="Logo" className="h-10 w-auto" />
         </Link>
         <div className="flex-1 flex justify-end items-center space-x-8">
           {/* Desktop Navigation */}

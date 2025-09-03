@@ -148,7 +148,7 @@ const Contact = () => {
               <Card>
                 <CardHeader>
                   <CardTitle className="text-2xl">
-                    Schedule a Discovery Call
+                    Schedule a Call
                   </CardTitle>
                   <CardDescription className="text-base">
                     We'll be in touch within 24 hours to discuss your project
@@ -156,132 +156,94 @@ const Contact = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name </Label>
-                        <span className="text-red-600">*</span>
-                        <Input
-                          id="firstName"
-                          value={formData.firstName}
-                          onChange={(e) =>
-                            handleInputChange("firstName", e.target.value)
-                          }
-                          placeholder="First Name"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name </Label>
-                        <span className="text-red-600">*</span>
-                        <Input
-                          id="lastName"
-                          value={formData.lastName}
-                          onChange={(e) =>
-                            handleInputChange("lastName", e.target.value)
-                          }
-                          placeholder="Last Name"
-                          required
-                        />
-                      </div>
+                  <form onSubmit={handleSubmit} className="space-y-6 flex flex-col">
+                    <div className="space-y-2">
+                      <Label htmlFor="firstName">First Name </Label>
+                      <span className="text-red-600">*</span>
+                      <Input
+                        id="firstName"
+                        value={formData.firstName}
+                        onChange={(e) => handleInputChange("firstName", e.target.value)}
+                        placeholder="First Name"
+                        required
+                      />
                     </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="email">Email </Label>
-                        <span className="text-red-600">*</span>
-                        <Input
-                          id="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) =>
-                            handleInputChange("email", e.target.value)
-                          }
-                          placeholder="your@email.com"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="phone">Phone </Label>
-                        <span className="text-red-600">*</span>
-                        <Input
-                          id="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) =>
-                            handleInputChange("phone", e.target.value)
-                          }
-                          placeholder="79846 40722"
-                          required
-                        />
-                      </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="lastName">Last Name </Label>
+                      <span className="text-red-600">*</span>
+                      <Input
+                        id="lastName"
+                        value={formData.lastName}
+                        onChange={(e) => handleInputChange("lastName", e.target.value)}
+                        placeholder="Last Name"
+                        required
+                      />
                     </div>
-
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="company">Company Name</Label>
-                        <Input
-                          id="company"
-                          value={formData.company}
-                          onChange={(e) =>
-                            handleInputChange("company", e.target.value)
-                          }
-                          placeholder="Your Company"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="service">Service Interest</Label>
-                        <Select
-                          onValueChange={(value) =>
-                            handleInputChange("service", value)
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select a service" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="consulting">
-                              Technology Consulting
-                            </SelectItem>
-                            <SelectItem value="integration">
-                              System Integration
-                            </SelectItem>
-                            <SelectItem value="transformation">
-                              Digital Transformation
-                            </SelectItem>
-                            <SelectItem value="development">
-                              Custom Development
-                            </SelectItem>
-                            <SelectItem value="cloud">
-                              Cloud Solutions
-                            </SelectItem>
-                            <SelectItem value="security">
-                              Cybersecurity
-                            </SelectItem>
-                            <SelectItem value="analytics">
-                              Data Analytics
-                            </SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email </Label>
+                      <span className="text-red-600">*</span>
+                      <Input
+                        id="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        placeholder="your@email.com"
+                        required
+                      />
                     </div>
-
+                    <div className="space-y-2">
+                      <Label htmlFor="phone">Phone </Label>
+                      <span className="text-red-600">*</span>
+                      <Input
+                        id="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => handleInputChange("phone", e.target.value)}
+                        placeholder="79846 40722"
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="company">Company Name</Label>
+                      <Input
+                        id="company"
+                        value={formData.company}
+                        onChange={(e) => handleInputChange("company", e.target.value)}
+                        placeholder="Your Company"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="service">Service Interest</Label>
+                      <Select
+                        onValueChange={(value) => handleInputChange("service", value)}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a service" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="consulting">Technology Consulting</SelectItem>
+                          <SelectItem value="integration">System Integration</SelectItem>
+                          <SelectItem value="transformation">Digital Transformation</SelectItem>
+                          <SelectItem value="development">Custom Development</SelectItem>
+                          <SelectItem value="cloud">Cloud Solutions</SelectItem>
+                          <SelectItem value="security">Cybersecurity</SelectItem>
+                          <SelectItem value="analytics">Data Analytics</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
                     <div className="space-y-2">
                       <Label htmlFor="message">Message </Label>
                       <span className="text-red-600">*</span>
                       <Textarea
                         id="message"
                         value={formData.message}
-                        onChange={(e) =>
-                          handleInputChange("message", e.target.value)
-                        }
+                        onChange={(e) => handleInputChange("message", e.target.value)}
                         placeholder="Tell us about your project and requirements..."
                         rows={5}
                         required
                       />
                     </div>
-
                     <Button type="submit" size="lg" className="w-full">
                       {submitting ? "Submitting..." : "Submit"}
                     </Button>

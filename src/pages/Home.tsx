@@ -55,9 +55,6 @@ const Home = () => {
             <Button size="lg" variant="secondary" asChild>
               <Link to="/contact">Get Started Today</Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary" asChild>
-              <Link to="/services">Our Services</Link>
-            </Button>
           </div>
         </div>
       </section>

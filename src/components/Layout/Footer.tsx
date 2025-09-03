@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             {/* <Logo className="h-10 w-auto [&>*]:brightness-0 [&>*]:invert" /> */}
-                      <img src="/Logo.jpg" alt="Logo" className="h-10 w-auto" />
+                      <img src="/Logo_Black.png" alt="Logo" className="h-12 w-auto" />
             <p className="text-sm text-muted-foreground">
               Engineering innovative solutions for tomorrow's challenges.
             </p>
